@@ -45,18 +45,18 @@ public class JobService {
 	}
 	
 	@PostMapping
-	public ResponseEntity<JobBean> post(@Valid @RequestBody JobBean jobBean) {
-		return ResponseEntity.ok().body(jobRepository.save(jobBean));
+	public ResponseEntity<JobBean> post(@RequestBody JobBean jobBean) {
+			return ResponseEntity.ok(jobRepository.save(jobBean));
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity delete(@PathVariable Long id) {
+	public ResponseEntity<JobBean> delete(@PathVariable Long id) {
 		//Optional<JobBean> bean = Optional.ofNullable(jobRepository.findById(id).orElseThrow(()-> new RuntimeException("Job not Found")));
 		try {
 			jobRepository.deleteById(id);
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<JobBean>(HttpStatus.NO_CONTENT);
 		}catch (RuntimeException e) {
-			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JobBean>(HttpStatus.BAD_REQUEST);
 		}
 		
 	}
