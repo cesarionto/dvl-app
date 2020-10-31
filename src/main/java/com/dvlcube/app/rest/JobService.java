@@ -3,6 +3,9 @@ package com.dvlcube.app.rest;
 import static com.dvlcube.app.manager.data.e.Menu.CONFIGURATION;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 //import java.util.Optional;
 
@@ -36,8 +39,13 @@ public class JobService {
 		return ResponseEntity.ok(jobs);
 	}
 	
+	@GetMapping("/{id}")
+	public Optional<JobBean> getById (@PathVariable Long id){
+		return jobRepository.findById(id);
+	}
+	
 	@PostMapping
-	public ResponseEntity<JobBean> post(@RequestBody JobBean jobBean) {
+	public ResponseEntity<JobBean> post(@Valid @RequestBody JobBean jobBean) {
 		return ResponseEntity.ok().body(jobRepository.save(jobBean));
 	}
 	
