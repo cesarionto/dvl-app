@@ -22,7 +22,8 @@
 	</properties>
 
 	<dependencies>
-		<!-- NOTA: este projeto deve estar no mesmo workspace para resolução local de dependências -->
+		<!-- NOTA: este projeto deve estar no mesmo workspace para resolução local 
+			de dependências -->
 		<!-- link: https://github.com/spring-boot-template/dvl-core -->
 		<dependency>
 			<groupId>com.dvlcube.xpress</groupId>
@@ -52,6 +53,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<!-- others -->
