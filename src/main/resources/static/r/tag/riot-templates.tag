@@ -120,7 +120,7 @@ this.state = {
 </div>
 
 <section id="filter" if="{ state.filterable }">
-	<input id="filter-box" type="text" placeholder="filter">
+	<input id="filter-box" name="name" type="text" placeholder="filter">
 </section>
 
 <script>
