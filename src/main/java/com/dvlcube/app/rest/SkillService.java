@@ -83,6 +83,24 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 	public Iterable<SkillBean> getLike(@RequestParam(required = true) String name) {
 		return repo.findAllByName(name);
 	}
+	
+	
+	//implementação do ponto 5 do readme e será testado somente no postman.
+	@GetMapping("/exists/name/{name}")
+	public boolean getSkillBeanByNameIfExists(@PathVariable String name ){
+		Optional<SkillBean> exists = repo.findByName(name);
+		return exists.isPresent();
+		
+	}
+	
+	@GetMapping("/name/{name}")
+	public Optional<SkillBean> getSkillBeanByName(@PathVariable String name ){
+		
+		return repo.findByName(name);
+		
+	}
+	
+	
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
